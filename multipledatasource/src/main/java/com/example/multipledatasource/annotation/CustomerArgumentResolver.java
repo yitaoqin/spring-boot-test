@@ -1,5 +1,6 @@
 package com.example.multipledatasource.annotation;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -17,8 +18,8 @@ import org.springframework.web.servlet.HandlerMapping;
 import java.lang.reflect.Field;
 import java.util.*;
 
+@Slf4j
 public class CustomerArgumentResolver implements HandlerMethodArgumentResolver{
-    private Logger logger = LoggerFactory.getLogger(CustomerArgumentResolver.class);
 
     /**
      *
@@ -46,8 +47,8 @@ public class CustomerArgumentResolver implements HandlerMethodArgumentResolver{
                                   WebDataBinderFactory webDataBinderFactory) throws Exception {
 
         String parameterName=methodParameter.getParameterName();
-        logger.info("参数名称：{}",parameterName);
-        logger.info("Model值：{}",modelAndViewContainer.getModel());
+        log.info("参数名称：{}",parameterName);
+        log.info("Model值：{}",modelAndViewContainer.getModel());
         Object target = modelAndViewContainer.containsAttribute(parameterName) ?
                 modelAndViewContainer.getModel().get(parameterName) : createAttribute(parameterName, methodParameter, webDataBinderFactory, nativeWebRequest);;
 
@@ -310,7 +311,7 @@ public class CustomerArgumentResolver implements HandlerMethodArgumentResolver{
             }
             catch (Exception e)
             {
-                logger.error("Set Field：{} Value Error，In {}",fieldName,object.getClass().getName());
+                log.error("Set Field：{} Value Error，In {}",fieldName,object.getClass().getName());
                 continue;
             }
         }
