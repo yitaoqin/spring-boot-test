@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    private ApplicationContext applicationContext;
+//    @Autowired
+//    private ApplicationContext applicationContext;
 
     public void register(MasterBean bean){
-        bean.setUri("0000000000000");
-        bean.setClientIp("10.10.10.10");
+//        bean.setUri("0000000000000");
+//        bean.setClientIp("10.10.10.10");
         System.out.println("注册进来了...");
-        applicationContext.publishEvent(new UserRegisterEvent(this,bean));
-        applicationContext.publishEvent(new EmailEvent(this,bean));
+//        applicationContext.publishEvent(new UserRegisterEvent(this,bean));
+//        applicationContext.publishEvent(new EmailEvent(this,bean));
     }
 }
